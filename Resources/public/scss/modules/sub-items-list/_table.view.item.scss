@@ -1,5 +1,5 @@
 .c-table-view-item {
-    height: 47px;
+    height: calculateRem(47px);
 
     &:not(:last-of-type) {
         border-bottom: calculateRem(1px) solid $ez-ground-primary;
@@ -25,10 +25,10 @@
         &--checkbox {
             position: absolute;
             left: 0;
-            width: 30px;
-            height: 47px;
+            width: calculateRem(30px);
+            height: calculateRem(47px);
             border-right: calculateRem(1px) solid $ez-ground-primary;
-            padding-left: 8px;
+            padding-left: calculateRem(8px);
         }
 
         &--icon {
@@ -54,7 +54,7 @@
         &--actions {
             position: absolute;
             right: 0;
-            height: 47px;
+            height: calculateRem(47px);
             width: calculateRem(70px);
             border-left: calculateRem(1px) solid $ez-ground-primary;
             padding: 0;

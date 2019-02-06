@@ -7,8 +7,8 @@
     }
 
     &__scroller {
-        margin-left: 30px;
-        margin-right: 70px;
+        margin-left: calculateRem(30px);
+        margin-right: calculateRem(70px);
         overflow-x: auto;
     }
 
@@ -21,20 +21,20 @@
     }
 
     &__columns-toggler-btn {
-        padding: 5px;
-        height: 32px;
-        width: 32px;
+        padding: calculateRem(5px);
+        height: calculateRem(32px);
+        width: calculateRem(32px);
     }
 
     &__columns-toggler-panel {
         border-radius: 0.5rem;
-        border: 1px solid #106d95;
+        border: calculateRem(1px) solid #106d95;
         background: white;
         position: absolute;
         z-index: 10;
-        padding: 10px;
-        top: 36px;
-        right: 17px;
+        padding: calculateRem(10px);
+        top: calculateRem(36px);
+        right: calculateRem(17px);
         font-weight: normal;
     }
 
@@ -55,7 +55,7 @@
 
     &__cell {
         &--head {
-            padding-left: 16px;
+            padding-left: calculateRem(16px);
             font-weight: 700;
             white-space: nowrap;
             text-overflow: ellipsis;
@@ -64,12 +64,12 @@
         &--checkbox {
             position: absolute;
             padding: 0;
-            left: 0px;
-            height: 43px;
-            width: 30px;
+            left: calculateRem(0px);
+            height: calculateRem(43px);
+            width: calculateRem(30px);
             border-right: calculateRem(1px) solid $ez-ground-primary;
             border-bottom: calculateRem(1px) solid $ez-ground-primary;
-            padding-left: 8px;
+            padding-left: calculateRem(8px);
         }
 
         &--sortable {
@@ -83,7 +83,7 @@
         &--actions {
             position: absolute;
             right: 0;
-            height: 43px;
+            height: calculateRem(43px);
             width: calculateRem(70px);
             border-left: calculateRem(1px) solid $ez-ground-primary;
             border-bottom: calculateRem(1px) solid $ez-ground-primary;
@@ -107,13 +107,13 @@
     }
 
     &__row {
-        border-bottom: 1px solid #a8c8d5;
+        border-bottom: calculateRem(1px) solid #a8c8d5;
     }
 
     &__body {
         .c-no-items {
-            padding-top: 7px;
-            padding-left: 39px;
+            padding-top: calculateRem(7px);
+            padding-left: calculateRem(39px);
         }
     }
 
@@ -121,17 +121,17 @@
         &--sort-by-name.c-table-view__head--sort-desc .c-table-view__cell--name .c-table-view__label:after,
         &--sort-by-date.c-table-view__head--sort-desc .c-table-view__cell--date .c-table-view__label:after,
         &--sort-by-priority.c-table-view__head--sort-desc .c-table-view__cell--priority .c-table-view__label:after {
-            border-left: 3px solid transparent;
-            border-right: 3px solid transparent;
-            border-top: 5px solid #333;
+            border-left: calculateRem(3px) solid transparent;
+            border-right: calculateRem(3px) solid transparent;
+            border-top: calculateRem(5px) solid #333;
         }
 
         &--sort-by-name.c-table-view__head--sort-asc .c-table-view__cell--name .c-table-view__label:after,
         &--sort-by-date.c-table-view__head--sort-asc .c-table-view__cell--date .c-table-view__label:after,
         &--sort-by-priority.c-table-view__head--sort-asc .c-table-view__cell--priority .c-table-view__label:after {
-            border-left: 3px solid transparent;
-            border-right: 3px solid transparent;
-            border-bottom: 5px solid #333;
+            border-left: calculateRem(3px) solid transparent;
+            border-right: calculateRem(3px) solid transparent;
+            border-bottom: calculateRem(5px) solid #333;
         }
     }
 }
