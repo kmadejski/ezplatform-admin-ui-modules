@@ -1,10 +1,12 @@
 .c-table-view-item {
-    & + & {
-        border-top: calculateRem(1px) solid $ez-ground-primary;
-    }
+    height: 47px;
 
-    &__translation {
-        display: block;
+    &:not(:last-of-type) {
+        border-bottom: calculateRem(1px) solid $ez-ground-primary;
+
+        td {
+            border-bottom: calculateRem(1px) solid $ez-ground-primary;
+        }
     }
 
     &__text-wrapper {
@@ -17,21 +19,16 @@
         padding-left: calculateRem(16px);
         font-size: calculateRem(14px);
         line-height: calculateRem(20px);
-
-        &--translations {
-            max-width: calculateRem(100px);
-        }
-
-        &--name .c-table-view-item__text-wrapper {
-            max-width: calculateRem(260px);
-        }
-
-        &--modified .c-table-view-item__text-wrapper {
-            max-width: calculateRem(190px);
-        }
+        white-space: nowrap;
+        text-overflow: ellipsis;
 
         &--checkbox {
-            width: 5%;
+            position: absolute;
+            left: 0;
+            width: 30px;
+            height: 47px;
+            border-right: calculateRem(1px) solid $ez-ground-primary;
+            padding-left: 8px;
         }
 
         &--icon {
@@ -55,7 +52,12 @@
         }
 
         &--actions {
-            width: calculateRem(100px);
+            position: absolute;
+            right: 0;
+            height: 47px;
+            width: calculateRem(70px);
+            border-left: calculateRem(1px) solid $ez-ground-primary;
+            padding: 0;
         }
     }
 

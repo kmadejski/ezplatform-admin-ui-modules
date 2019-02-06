@@ -151,10 +151,13 @@ export default class TableViewItemComponent extends PureComponent {
      * @returns {JSX.Element}
      * @memberof TableViewItemComponent
      */
-    renderTranslation(translation, index) {
+    renderTranslation(translation, index, translations) {
+        const isLastItem = index === translations.length - 1;
+
         return (
             <span key={index} className="c-table-view-item__translation">
                 {translation}
+                {isLastItem ? '' : ', '}
             </span>
         );
     }
@@ -172,7 +175,7 @@ export default class TableViewItemComponent extends PureComponent {
     }
 
     render() {
-        const { content, location, isSelected, contentTypesMap, generateLink, languages } = this.props;
+        const { content, location, isSelected, contentTypesMap, generateLink, languages, columnsVisibility } = this.props;
         const notAvailableLabel = Translator.trans(/*@Desc("N/A")*/ 'content_type.not_available.label', {}, 'sub_items');
         const editLabel = Translator.trans(/*@Desc("Edit")*/ 'edit_item_btn.label', {}, 'sub_items');
         const { formatShortDateWithTimezone } = window.eZ.helpers.timezone;
@@ -188,10 +191,11 @@ export default class TableViewItemComponent extends PureComponent {
             return languages.mappings[langauge.languageCode].name;
         });
         const contentTypeIconUrl = eZ.helpers.contentType.getContentTypeIconUrl(contentTypeIdentifier);
+        const cellClass = 'c-table-view-item__cell';
 
         return (
             <tr className="c-table-view-item">
-                <td className="c-table-view-item__cell c-table-view-item__cell--checkbox">
+                <td className={`${cellClass}--checkbox`}>
                     <input type="checkbox" checked={isSelected} onChange={this.onSelectCheckboxChange} />
                 </td>
                 <td className="c-table-view-item__cell c-table-view-item__cell--icon">
@@ -200,25 +204,30 @@ export default class TableViewItemComponent extends PureComponent {
                 <td className="c-table-view-item__cell c-table-view-item__cell--name">
                     <a {...linkAttrs}>{content.Name}</a>
                 </td>
-                <td className="c-table-view-item__cell c-table-view-item__cell--modified">
-                    <div className="c-table-view-item__text-wrapper">
-                        {formatShortDateWithTimezone(new Date(content.lastModificationDate))}
-                    </div>
-                </td>
-                <td className="c-table-view-item__cell c-table-view-item__cell--content-type">
-                    <div className="c-table-view-item__text-wrapper">{contentTypeName}</div>
-                </td>
-                {this.renderPriorityCell()}
-                <td className="c-table-view-item__cell c-table-view-item__cell--translations">
-                    {translations.map(this.renderTranslation)}
-                </td>
+                {columnsVisibility.modified && (
+                    <td className="c-table-view-item__cell c-table-view-item__cell--modified">
+                        <div className="c-table-view-item__text-wrapper">
+                            {formatShortDateWithTimezone(new Date(content.lastModificationDate))}
+                        </div>
+                    </td>
+                )}
+                {columnsVisibility.contentType && (
+                    <td className="c-table-view-item__cell c-table-view-item__cell--content-type">
+                        <div className="c-table-view-item__text-wrapper">{contentTypeName}</div>
+                    </td>
+                )}
+                {columnsVisibility.priority && this.renderPriorityCell()}
+                {columnsVisibility.translations && (
+                    <td className="c-table-view-item__cell c-table-view-item__cell--translations">
+                        {translations.map(this.renderTranslation)}
+                    </td>
+                )}
                 <td className="c-table-view-item__cell c-table-view-item__cell--actions">
                     <span
                         title={editLabel}
                         onClick={this.handleEdit}
                         className="c-table-view-item__btn c-table-view-item__btn--edit"
-                        tabIndex="-1"
-                    >
+                        tabIndex="-1">
                         <div className="c-table-view-item__btn-inner">
                             <Icon name="edit" extraClasses="ez-icon--medium" />
                         </div>
@@ -239,4 +248,5 @@ TableViewItemComponent.propTypes = {
     generateLink: PropTypes.func.isRequired,
     languages: PropTypes.object.isRequired,
     onItemSelect: PropTypes.func.isRequired,
+    columnsVisibility: PropTypes.object.isRequired,
 };
