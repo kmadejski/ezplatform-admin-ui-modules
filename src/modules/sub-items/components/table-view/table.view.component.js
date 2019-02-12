@@ -262,7 +262,7 @@ export default class TableViewComponent extends Component {
                             <button
                                 ref={this._refColumnsTogglerButton}
                                 type="button"
-                                className="btn btn-secondary c-table-view__columns-toggler-btn"
+                                className="btn btn-dark c-table-view__columns-toggler-btn"
                                 onClick={this.toggleColumnsToggler}>
                                 <Icon name="filters" extraClasses="ez-icon--small ez-icon--light" />
                             </button>

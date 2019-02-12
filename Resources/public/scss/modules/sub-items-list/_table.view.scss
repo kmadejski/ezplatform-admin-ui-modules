@@ -27,15 +27,15 @@
     }
 
     &__columns-toggler-panel {
-        border-radius: 0.5rem;
-        border: calculateRem(1px) solid #106d95;
+        border-radius: calculateRem(4px);
         background: white;
         position: absolute;
         z-index: 10;
-        padding: calculateRem(10px);
+        padding: calculateRem(4px) calculateRem(14px);
         top: calculateRem(36px);
         right: calculateRem(17px);
         font-weight: normal;
+        box-shadow: 0 calculateRem(2px) calculateRem(4px) 0 rgba(0, 0, 0, 0.45);
     }
 
     &__columns-toggler-list {
@@ -46,11 +46,21 @@
 
     &__columns-toggler-option {
         cursor: pointer;
+
+        .form-check-inline {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: calculateRem(12px) calculateRem(4px);
+            margin-right: calculateRem(12px);
+            line-height: 0;
+        }
     }
 
     &__columns-toggler-option-label {
         cursor: pointer;
         user-select: none;
+        font-size: calculateRem(14px);
     }
 
     &__cell {
@@ -67,9 +77,8 @@
             left: calculateRem(0px);
             height: calculateRem(43px);
             width: calculateRem(30px);
-            border-right: calculateRem(1px) solid $ez-ground-primary;
             border-bottom: calculateRem(1px) solid $ez-ground-primary;
-            padding-left: calculateRem(8px);
+            padding-left: calculateRem(16px);
         }
 
         &--sortable {
@@ -85,7 +94,6 @@
             right: 0;
             height: calculateRem(43px);
             width: calculateRem(70px);
-            border-left: calculateRem(1px) solid $ez-ground-primary;
             border-bottom: calculateRem(1px) solid $ez-ground-primary;
             padding: 0;
         }

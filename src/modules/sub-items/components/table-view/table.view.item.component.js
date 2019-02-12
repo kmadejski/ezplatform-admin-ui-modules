@@ -199,7 +199,7 @@ export default class TableViewItemComponent extends PureComponent {
                     <input type="checkbox" checked={isSelected} onChange={this.onSelectCheckboxChange} />
                 </td>
                 <td className="c-table-view-item__cell c-table-view-item__cell--icon">
-                    <Icon customPath={contentTypeIconUrl} extraClasses="ez-icon--medium" />
+                    <Icon customPath={contentTypeIconUrl} extraClasses="ez-icon--small" />
                 </td>
                 <td className="c-table-view-item__cell c-table-view-item__cell--name">
                     <a {...linkAttrs}>{content.Name}</a>
